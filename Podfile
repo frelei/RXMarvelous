@@ -4,6 +4,8 @@ use_frameworks!
 target 'RXMarvelous' do
 	pod 'RxSwift',    '~> 3.0'
    	pod 'RxCocoa',    '~> 3.0'
+    pod 'Alamofire', '~> 4.0'
+    pod 'ObjectMapper', '~> 2.2'
 end
 
 target 'RXMarvelousTests' do

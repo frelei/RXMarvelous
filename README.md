@@ -1,4 +1,4 @@
-# Project Name
+# Marvelous
 
 Marvelous is a simple sample where we show the caracthers of the Marvel Comics!!
 
@@ -13,4 +13,4 @@ pod install
 
 ## Frameworks
 
-This app uses the [Marvel api] (https://developer.marvel.com). So go to the there register and create your key!
+This app uses the [Marvel API] (https://developer.marvel.com). So go to the there register and create your key!
