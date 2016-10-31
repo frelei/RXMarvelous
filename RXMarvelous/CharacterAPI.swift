@@ -32,7 +32,7 @@ struct CharacterAPI {
                 }
             }
             return Disposables.create {
-                request.cancel()
+//                request.cancel()
             }
         }
     }
