@@ -94,6 +94,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B2EF1EA1DCA3F5D008A19DE /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		5B4E631F1DC689B600D097E0 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				5B5BFDE31DC65DD5007E52A7 /* RXMarvelousTests.swift */,
+				5B2EF1EA1DCA3F5D008A19DE /* New Group */,
 				5B5BFDE51DC65DD5007E52A7 /* Info.plist */,
 			);
 			path = RXMarvelousTests;

@@ -17,21 +17,24 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         CharacterAPI.request(endpoint: .characters(nameStartsWith: "Thor", limit: 20, offset: 0))
-
-            .subscribe { (event: Event<[Character]>) in
+            .map({ (json) -> Character in
+                return Character(JSON: json)!
+            })
+            .subscribe { (event: Event<Character?>) in
                 switch event {
-                case .next(let character):
-                    print(character)
-                    
-                case .completed:
-                    print("Completed")
-                    
-                case .error(let e):
-                    print(e.localizedDescription)
-                  
+                    case .next(let character):
+                        print(character?.name)
+                        print(character?.characterId)
+    
+                    case .completed:
+                        print("Completed")
+    
+                    case .error(let e):
+                        print(e.localizedDescription)
+                      
                 }
         }.addDisposableTo(dispose)
-    
+
     }
     
 }

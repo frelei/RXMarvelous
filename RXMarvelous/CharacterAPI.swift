@@ -13,39 +13,43 @@ import RxSwift
 
 struct CharacterAPI {
     
-    static func request<T>(endpoint: CharacterAPI.Endpoints) -> Observable<[T]> {
+    static func request(endpoint: CharacterAPI.Endpoints) -> Observable<[String:AnyObject]> {
         return Observable.create { observer in
             let request = Alamofire.request(endpoint.path,
                                         method: endpoint.method,
-                                        parameters: endpoint.parameter,
-                                        encoding: JSONEncoding.default,
-                                        headers: nil)
+                                        parameters: endpoint.parameter)
             .validate()
             .responseJSON { (response: DataResponse<Any>) in
                 if let err = response.result.error {
                     observer.onError(err)
                 } else {
-                    if let elements = response.result.value as? [T] {
-                        observer.onNext(elements)
-                        observer.onCompleted()
+                    if let resp = response.result.value as? [String:AnyObject] {
+                        if let data = resp["data"] as? [String:AnyObject] {
+                            if let results = data["results"] as? [[String:AnyObject]] {
+                                for r in results {
+                                    observer.onNext(r)
+                                }
+                            }
+                        }
                     }
+                    observer.onCompleted()
                 }
             }
             return Disposables.create {
-//                request.cancel()
+                request.cancel()
             }
         }
     }
 
     enum Endpoints {
-        case characters(nameStartsWith: String, limit: Int, offset: Int)
+        case characters(nameStartsWith: String?, limit: Int, offset: Int)
         case character(characterId: Int)
         case comic(characterId: Int)
         case event(charactedId: Int)
         case series(characterId: Int)
         case stories(characterId: Int)
         
-        var baseURL: String { return "https://gateway.marvel.com:443/v1/public/"}
+        var baseURL: String { return "https://gateway.marvel.com/v1/public/"}
         
         var method: Alamofire.HTTPMethod {
             switch self {
@@ -79,10 +83,17 @@ struct CharacterAPI {
         var parameter: [String:AnyObject]? {
             switch self {
             case .characters(let nameStartsWith, let limit, let offset):
-                return ["nameStartsWith":nameStartsWith as AnyObject,
-                        "limit": limit as AnyObject,
-                        "offset": offset as AnyObject]
-                       .combined(other: APIKey.authentication() as Dictionary<String, AnyObject>)
+                if let name = nameStartsWith {
+                    return ["nameStartsWith":name as AnyObject,
+                            "limit": limit as AnyObject,
+                            "offset": offset as AnyObject]
+                        .combined(other: APIKey.authentication() as Dictionary<String, AnyObject>)
+                } else {
+                    return ["limit": limit as AnyObject,
+                            "offset": offset as AnyObject]
+                        .combined(other: APIKey.authentication() as Dictionary<String, AnyObject>)
+                }
+                
             case .character:
                 return nil
             case .comic( _):
