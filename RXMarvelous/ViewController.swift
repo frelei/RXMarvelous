@@ -16,15 +16,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        CharacterAPI.request(endpoint: .characters(nameStartsWith: "Thor", limit: 20, offset: 0))
-            .map({ (json) -> Character in
-                return Character(JSON: json)!
+        CharacterAPI.request(endpoint: .characters(nameStartsWith: nil, limit: 20, offset: 0))
+            .map({ (json) -> Character? in
+                return Character(JSON: json)
             })
             .subscribe { (event: Event<Character?>) in
                 switch event {
                     case .next(let character):
-                        print(character?.name)
-                        print(character?.characterId)
+                        print(character?.name as Any)
+                        print(character?.characterId as Any)
     
                     case .completed:
                         print("Completed")

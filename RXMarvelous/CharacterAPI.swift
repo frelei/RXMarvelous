@@ -23,15 +23,13 @@ struct CharacterAPI {
                 if let err = response.result.error {
                     observer.onError(err)
                 } else {
-                    if let resp = response.result.value as? [String:AnyObject] {
-                        if let data = resp["data"] as? [String:AnyObject] {
-                            if let results = data["results"] as? [[String:AnyObject]] {
-                                for r in results {
-                                    observer.onNext(r)
-                                }
+                    if let resp = response.result.value as? [String:AnyObject],
+                       let data = resp["data"] as? [String:AnyObject],
+                       let results = data["results"] as? [[String:AnyObject]] {
+                            for r in results {
+                                observer.onNext(r)
                             }
-                        }
-                    }
+                       }
                     observer.onCompleted()
                 }
             }
