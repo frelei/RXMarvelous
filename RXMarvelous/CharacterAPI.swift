@@ -10,36 +10,9 @@ import Foundation
 import Alamofire
 import RxSwift
 
-
 struct CharacterAPI {
     
-    static func request(endpoint: CharacterAPI.Endpoints) -> Observable<[String:AnyObject]> {
-        return Observable.create { observer in
-            let request = Alamofire.request(endpoint.path,
-                                        method: endpoint.method,
-                                        parameters: endpoint.parameter)
-            .validate()
-            .responseJSON { (response: DataResponse<Any>) in
-                if let err = response.result.error {
-                    observer.onError(err)
-                } else {
-                    if let resp = response.result.value as? [String:AnyObject],
-                       let data = resp["data"] as? [String:AnyObject],
-                       let results = data["results"] as? [[String:AnyObject]] {
-                            for r in results {
-                                observer.onNext(r)
-                            }
-                       }
-                    observer.onCompleted()
-                }
-            }
-            return Disposables.create {
-                request.cancel()
-            }
-        }
-    }
-
-    enum Endpoints {
+    enum Endpoints: Resource {
         case characters(nameStartsWith: String?, limit: Int, offset: Int)
         case character(characterId: Int)
         case comic(characterId: Int)

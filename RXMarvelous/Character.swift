@@ -17,8 +17,20 @@ class Character: Mappable {
     var modified: String?
     var url: [String]?
     var thumbnail: [String:String]?
-
-    required init?(map: Map) {
+    
+    // MARK: - Initializers
+    class func mappedArrayOfCharacter(dict: Dictionary<String, AnyObject>?) -> [Character]? {
+        if let dictionary = dict?["data"] as? [String:Any],
+            let values = dictionary["results"] as? [[String:Any]],
+            let characters = Mapper<Character>().mapArray(JSONArray: values) {
+                return characters
+        } else {
+            return nil
+        }
+    }
+    
+    required convenience init?(map: Map) {
+         self.init()
     }
     
     func mapping(map: Map) {
@@ -29,4 +41,15 @@ class Character: Mappable {
         thumbnail <- map["thumbnail"]
     }
     
+    // MARK: - function
+    
+    func getHeroImagePath() -> String {
+        if let thumb = thumbnail,
+            let path = thumb["path"],
+            let ext = thumb["extension"] {
+            return "\(path).\(ext)"
+        } else {
+            return  ""
+        }
+    }
 }

@@ -9,6 +9,10 @@ target 'RXMarvelous' do
 end
 
 target 'RXMarvelousTests' do
-    pod 'RxBlocking', '~> 3.0'
-    pod 'RxTest',     '~> 3.0'
+    inherit! :search_paths
+    pod 'OHHTTPStubs'
+    pod 'OHHTTPStubs/Swift'
+    pod 'ObjectMapper', '~> 2.2'
+    pod 'RxSwift',    '~> 3.0'
+    pod 'Alamofire', '~> 4.0'
 end

@@ -16,24 +16,25 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        CharacterAPI.request(endpoint: .characters(nameStartsWith: nil, limit: 20, offset: 0))
-            .map({ (json) -> Character? in
-                return Character(JSON: json)
-            })
-            .subscribe { (event: Event<Character?>) in
-                switch event {
-                    case .next(let character):
-                        print(character?.name as Any)
-                        print(character?.characterId as Any)
-    
-                    case .completed:
-                        print("Completed")
-    
-                    case .error(let e):
-                        print(e.localizedDescription)
-                      
-                }
-        }.addDisposableTo(dispose)
+//        CharacterAPI.request(endpoint: CharacterAPI.Endpoints.characters(nameStartsWith: nil, limit: 20, offset: 0))
+//            .map({ (json) -> Character? in
+//                return Character(JSON: json)
+//            })
+//            .observeOn(MainScheduler.instance)
+//            .subscribe { (event: Event<Character?>) in
+//                switch event {
+//                    case .next(let character):
+//                        print(character?.name as Any)
+//                        print(character?.characterId as Any)
+//    
+//                    case .completed:
+//                        print("Completed")
+//    
+//                    case .error(let e):
+//                        print(e.localizedDescription)
+//                      
+//                }
+//        }.addDisposableTo(dispose)
 
     }
     
