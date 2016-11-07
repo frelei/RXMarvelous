@@ -19,13 +19,13 @@ class Character: Mappable {
     var thumbnail: [String:String]?
     
     // MARK: - Initializers
-    class func mappedArrayOfCharacter(dict: Dictionary<String, AnyObject>?) -> [Character]? {
+    class func mappedArrayOfCharacter(dict: Dictionary<String, AnyObject>?) -> [Character] {
         if let dictionary = dict?["data"] as? [String:Any],
             let values = dictionary["results"] as? [[String:Any]],
             let characters = Mapper<Character>().mapArray(JSONArray: values) {
                 return characters
         } else {
-            return nil
+            return []
         }
     }
     
