@@ -13,7 +13,7 @@ import RxSwift
 struct CharacterAPI {
     
     enum Endpoints: Resource {
-        case characters(nameStartsWith: String?, limit: Int, offset: Int)
+        case characters(nameStartsWith: String, limit: Int, offset: Int)
         case character(characterId: Int)
         case comic(characterId: Int)
         case event(charactedId: Int)
@@ -54,13 +54,13 @@ struct CharacterAPI {
         var parameter: [String:AnyObject]? {
             switch self {
             case .characters(let nameStartsWith, let limit, let offset):
-                if let name = nameStartsWith {
-                    return ["nameStartsWith":name as AnyObject,
-                            "limit": limit as AnyObject,
+                if nameStartsWith == "" {
+                    return ["limit": limit as AnyObject,
                             "offset": offset as AnyObject]
                         .combined(other: APIKey.authentication() as Dictionary<String, AnyObject>)
                 } else {
-                    return ["limit": limit as AnyObject,
+                    return ["nameStartsWith":nameStartsWith as AnyObject,
+                            "limit": limit as AnyObject,
                             "offset": offset as AnyObject]
                         .combined(other: APIKey.authentication() as Dictionary<String, AnyObject>)
                 }

@@ -6,6 +6,7 @@ target 'RXMarvelous' do
    	pod 'RxCocoa',    '~> 3.0'
     pod 'Alamofire', '~> 4.0'
     pod 'ObjectMapper', '~> 2.2'
+    pod 'RxDataSources'
 end
 
 target 'RXMarvelousTests' do
