@@ -1,6 +1,7 @@
 # Marvelous
 
-Marvelous is a simple sample where we show the caracthers of the Marvel Comics!!
+Marvelous is a simple sample where I show the caracthers of the Marvel Comics!! 
+In this sample, I am using RxSwift to demostrate some funcionalities of the framework applying Reactive and functional programing concepts. 
 
 ## Installation
 
@@ -14,3 +15,11 @@ pod install
 ## Frameworks
 
 This app uses the [Marvel API] (https://developer.marvel.com). So go to the there register and create your key!
+
+
+
+### Screens
+
+![Screen1](http://i.imgur.com/DBPKSyj.jpg)
+![Screen2](http://i.imgur.com/TjUOuuJ.jpg)
+![Screen1](http://i.imgur.com/WMFuq9s.jpg)
