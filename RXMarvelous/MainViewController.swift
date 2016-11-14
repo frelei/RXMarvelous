@@ -30,7 +30,7 @@ class MainViewController: UIViewController {
         let searchResult = searchBar.rx.text.asObservable()
                             .throttle(3, scheduler: MainScheduler.instance)
                             .flatMapLatest { query -> Observable<[Character]> in
-                                return CharacterAPI().heros(search: query!, offset: 0, trigger: trigger)
+                                return CharacterAPI().heros(search: query!, trigger: trigger)
                             }.catchErrorJustReturn([Character]())
         
         // Configure the tableview cell
@@ -39,7 +39,12 @@ class MainViewController: UIViewController {
         searchResult.bindTo(tableView.rx.items(cellIdentifier: "HERO_CELL")) { row, character, herocell in
             let cell: HeroTableViewCell = (herocell as? HeroTableViewCell)!
             cell.heroNameLabel.text = character.name
-        }.addDisposableTo(disposeBag)
+            cell.downloadableImage = UIImage.imageFrom(urlString: character.getHeroImagePath())
+//            UIImage.imageFrom(urlString: character.getHeroImagePath())
+//                .bindTo(cell.heroImageView.rx.image(transitionType: kCATransitionFade))
+//                .addDisposableTo(self.disposeBag)
+
+            }.addDisposableTo(disposeBag)
         
         
         tableView.rx.contentOffset
