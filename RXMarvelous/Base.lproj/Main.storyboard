@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="148" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Op0-Wh-LkH">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="148" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Op0-Wh-LkH">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Marvel Heros" id="BLP-Lu-3qB">
@@ -43,11 +44,58 @@
                     <connections>
                         <outlet property="searchBar" destination="BLP-Lu-3qB" id="d7f-ba-dH6"/>
                         <outlet property="tableView" destination="Op0-Wh-LkH" id="ODH-PG-1X9"/>
+                        <segue destination="53g-Hf-e7t" kind="show" identifier="MarvelDetail" id="A9H-1a-bjY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="972" y="38.23088455772114"/>
+        </scene>
+        <!--Marvel Detail View Controller-->
+        <scene sceneID="Fhx-dJ-2pE">
+            <objects>
+                <viewController id="53g-Hf-e7t" customClass="MarvelDetailViewController" customModule="RXMarvelous" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CCk-fb-fP0"/>
+                        <viewControllerLayoutGuide type="bottom" id="czF-X8-7Fk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="85o-Hp-4tu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZWJ-ep-heX">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WC8-Sf-ag1">
+                                <rect key="frame" x="0.0" y="475" width="375" height="192"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="192" id="iRw-dF-mWY"/>
+                                </constraints>
+                                <color key="textColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="WC8-Sf-ag1" secondAttribute="trailing" constant="-16" id="8lY-Wc-njR"/>
+                            <constraint firstItem="czF-X8-7Fk" firstAttribute="top" secondItem="WC8-Sf-ag1" secondAttribute="bottom" id="GNI-dd-OAH"/>
+                            <constraint firstItem="ZWJ-ep-heX" firstAttribute="top" secondItem="CCk-fb-fP0" secondAttribute="bottom" id="KME-39-Web"/>
+                            <constraint firstItem="ZWJ-ep-heX" firstAttribute="leading" secondItem="85o-Hp-4tu" secondAttribute="leadingMargin" constant="-16" id="NqR-YC-7Cf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZWJ-ep-heX" secondAttribute="trailing" constant="-16" id="mGn-pa-W2k"/>
+                            <constraint firstItem="WC8-Sf-ag1" firstAttribute="leading" secondItem="85o-Hp-4tu" secondAttribute="leadingMargin" constant="-16" id="qOq-oF-sQJ"/>
+                            <constraint firstItem="czF-X8-7Fk" firstAttribute="top" secondItem="ZWJ-ep-heX" secondAttribute="bottom" id="w6w-Va-gcr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionTextView" destination="WC8-Sf-ag1" id="XhV-sR-c7r"/>
+                        <outlet property="imageView" destination="ZWJ-ep-heX" id="kV9-6o-7py"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DtY-Al-dM3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1720.8" y="37.331334332833585"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Iei-gS-9Bb">
@@ -56,9 +104,12 @@
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Wz5-G1-aG8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="Wz5-G1-aG8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -67,7 +118,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N95-H8-dpU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
+            <point key="canvasLocation" x="143" y="38"/>
         </scene>
     </scenes>
 </document>

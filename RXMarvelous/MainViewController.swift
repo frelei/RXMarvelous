@@ -12,8 +12,12 @@ import RxCocoa
 
 class MainViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.tableFooterView = UIView(frame: CGRect.zero)
+        }
+    }
     
     private let disposeBag = DisposeBag()
     
@@ -40,9 +44,10 @@ class MainViewController: UIViewController {
             let cell: HeroTableViewCell = (herocell as? HeroTableViewCell)!
             cell.heroNameLabel.text = character.name
             cell.downloadableImage = UIImage.imageFrom(urlString: character.getHeroImagePath())
-            }.addDisposableTo(disposeBag)
+        }.addDisposableTo(disposeBag)
         
         
+        // TableView Delegates
         tableView.rx.contentOffset
             .subscribe { _ in
                 if self.searchBar.isFirstResponder {
@@ -50,6 +55,36 @@ class MainViewController: UIViewController {
                 }
             }
             .addDisposableTo(disposeBag)
+        
+        tableView.rx
+            .itemSelected
+            .subscribe(onNext: { indexPath in
+                self.tableView.deselectRow(at: indexPath, animated: true)
+            })
+            .addDisposableTo(disposeBag)
+        
+        tableView.rx.modelSelected(Character.self)
+            .subscribe { (character) in
+                self.performSegue(withIdentifier: "MarvelDetail", sender: character.element)
+            }.addDisposableTo(disposeBag)
+        
+        tableView.rx.setDelegate(self).addDisposableTo(disposeBag)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let viewController = segue.destination as? MarvelDetailViewController {
+            let char = sender as? Character
+            viewController.character = char
+        }
+    }
+    
+}
 
+
+extension MainViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
+    
 }

@@ -12,29 +12,33 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HERO_CELL" rowHeight="97" id="KGk-i7-Jjw" customClass="HeroTableViewCell" customModule="RXMarvelous" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HERO_CELL" rowHeight="97" id="KGk-i7-Jjw" customClass="HeroTableViewCell" customModule="RXMarvelous" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="149"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9OW-eb-09h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJ1-5T-uwi">
-                        <rect key="frame" x="8" y="120" width="359" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.52549019610000003" green="0.52549019610000003" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJ1-5T-uwi">
+                        <rect key="frame" x="0.0" y="120" width="375" height="29"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="29" id="zdd-od-RyR"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="9OW-eb-09h" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="3xW-Fl-NAx"/>
-                    <constraint firstAttribute="leadingMargin" secondItem="gJ1-5T-uwi" secondAttribute="leading" id="A4Y-Yg-gFg"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="gJ1-5T-uwi" secondAttribute="trailing" id="OWy-4F-Uoa"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="gJ1-5T-uwi" secondAttribute="leading" constant="8" id="A4Y-Yg-gFg"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="gJ1-5T-uwi" secondAttribute="trailing" constant="-8" id="OWy-4F-Uoa"/>
                     <constraint firstItem="9OW-eb-09h" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="fiU-wW-Pme"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="gJ1-5T-uwi" secondAttribute="bottom" constant="0.5" id="gbH-HZ-8oU"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="gJ1-5T-uwi" secondAttribute="bottom" constant="-8" id="gbH-HZ-8oU"/>
                     <constraint firstItem="9OW-eb-09h" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="kgN-wx-9vm"/>
                     <constraint firstItem="9OW-eb-09h" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="zAy-90-d9Z"/>
                 </constraints>

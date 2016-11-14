@@ -16,7 +16,7 @@ class HeroTableViewCell: UITableViewCell {
     
     var disposeBag: DisposeBag?
     
-    var downloadableImage: Observable<UIImage>? {
+    var downloadableImage: Observable<UIImage?>? {
         didSet {
             let disposeBag = DisposeBag()
             
