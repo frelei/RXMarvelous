@@ -40,10 +40,6 @@ class MainViewController: UIViewController {
             let cell: HeroTableViewCell = (herocell as? HeroTableViewCell)!
             cell.heroNameLabel.text = character.name
             cell.downloadableImage = UIImage.imageFrom(urlString: character.getHeroImagePath())
-//            UIImage.imageFrom(urlString: character.getHeroImagePath())
-//                .bindTo(cell.heroImageView.rx.image(transitionType: kCATransitionFade))
-//                .addDisposableTo(self.disposeBag)
-
             }.addDisposableTo(disposeBag)
         
         
