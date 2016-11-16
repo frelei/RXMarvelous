@@ -40,6 +40,7 @@ class MainViewController: UIViewController {
         // Configure the tableview cell
         let nib = UINib(nibName: "HeroTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "HERO_CELL")
+        
         searchResult.bindTo(tableView.rx.items(cellIdentifier: "HERO_CELL")) { row, character, herocell in
             let cell: HeroTableViewCell = (herocell as? HeroTableViewCell)!
             cell.heroNameLabel.text = character.name

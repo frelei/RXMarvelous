@@ -42,5 +42,5 @@ struct Connection {
             }
         }
     }
-
+    
 }

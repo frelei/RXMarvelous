@@ -332,6 +332,7 @@
 				TargetAttributes = {
 					5B5BFDCA1DC65DD4007E52A7 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = W9C5RFHWCR;
 						ProvisioningStyle = Automatic;
 					};
 					5B5BFDDE1DC65DD5007E52A7 = {
@@ -675,6 +676,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = W9C5RFHWCR;
 				INFOPLIST_FILE = RXMarvelous/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.frelei.RXMarvelous;
@@ -690,6 +693,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = W9C5RFHWCR;
 				INFOPLIST_FILE = RXMarvelous/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.frelei.RXMarvelous;

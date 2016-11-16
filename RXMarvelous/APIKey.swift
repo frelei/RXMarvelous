@@ -9,9 +9,10 @@
 import Foundation
 
 struct APIKey {
-    
-   static let PUBLICKEY = "ddde9d0314a3aaa4e2ca8ef07168ac13"
-   static let PRIVATEKEY = "8a42919d6a26e2db6fff5a58a776f8d1f5b88e59"
+   
+   // MARK: - Add your keys here
+   static let PUBLICKEY = ""
+   static let PRIVATEKEY = ""
     
     static func authentication() -> [String:String] {
         let actualTime = NSDate().timeIntervalSince1970.description
